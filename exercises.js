@@ -40,17 +40,11 @@ let reverse = function (arr) {
 // Put your answer below -------------------------
 
 let removeFalsy = function (arr) {
-    trueArray = arr.slice().filter(element =>true);
-    console.log(trueArray);
-    console.log(arr);
+    trueArray = arr.slice().filter(Boolean);
+    return trueArray
 };
 
-
-
-
-
-
-
+// trueArray = arr.slice().filter(element => true); is there a way to make this work too? or rather, why does it not?
 
 // -----------------------------------------------
 
@@ -62,13 +56,13 @@ let removeFalsy = function (arr) {
 
 // Put your answer below -------------------------
 
+let arrayToObject = function (arr) {
+    const object = Object.fromEntries(arr);
+    return object;
+};
 
-
-
-
-
-
-
+myArray = [['name', 'Charlie'], ['color', 'brown'], ['age', 10]];
+arrayToObject(myArray);
 
 
 // -----------------------------------------------
@@ -80,13 +74,13 @@ let removeFalsy = function (arr) {
 
 // Put your answer below -------------------------
 
+const noDupes = function (arr) {
+    uniArray = [...new Set(arr)];
+    return uniArray;
+}
 
-
-
-
-
-
-
+let testArray = [1,2,3,4,5,4,3];
+noDupes(testArray);
 
 
 // -----------------------------------------------
@@ -101,12 +95,20 @@ let removeFalsy = function (arr) {
 
 // Put your answer below -------------------------
 
+const identicalOrNot = function (arr1, arr2) {
+    let arr3 = arr1.concat(arr2);
+    let uniArray = [...new Set(arr3)];
+    if (arr1.length === uniArray.length && arr2.length === uniArray.length) {
+        return true;
+    } else {
+        return false;
+    }
+};
 
+// let testArray1 = [1,2,3,4];
+// let testArray2 = [1,4,3,2];
 
-
-
-
-
+// identicalOrNot(testArray1, testArray2);
 
 
 
@@ -131,13 +133,24 @@ let removeFalsy = function (arr) {
 
 // Put your answer below -------------------------
 
+let flatArray = [];
 
+let flattenArray = function (arr) {
+        for(var i = 0; i < arr.length; i++){
+            var element = arr[i];
+            if (element instanceof Array) {
+                flattenArray(element);
+            } else {
+                flatArray.push(element);
+            }
+        };
+    flatArray.concat(flatArray);
+    return flatArray;
+};
 
-
-
-
-
-
+// array1 = [0, 1, 2, [3, 4]]
+// array2 = [0, 1, 2, [[[3, 4]]]]
+// flattenArray(array2);
 
 
 // -----------------------------------------------
@@ -151,9 +164,14 @@ let removeFalsy = function (arr) {
 // Put your answer below -------------------------
 
 
+let slicer = function (arr,i) {
+    arr1 = arr.slice(0,i)
+    arr2 = arr.slice(i, arr.length);
+    arr3 = [[arr1], [arr2]];
 
+} 
 
-
+// slicer([1, 2, 3, 4], 2);
 
 
 
