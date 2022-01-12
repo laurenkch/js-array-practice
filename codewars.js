@@ -11,6 +11,15 @@ var number=function(array){
     };
 
 
+var number = function(arrary) {
+    let arr = [];
+    for(let i = 1; i <= arr.length; i++) {
+        result.push(i) + ': ' + arr[i-1];
+    }
+    return result;
+}
+
+
 // # 2
 // Filling an array (part 1)
 // https://www.codewars.com/kata/571d42206414b103dc0006a1/train/javascript
@@ -23,12 +32,19 @@ function arr(n){
     return newArr;
   }
 
+const arr = N => N === undefined ? [] : [...Array(N).keys()];
+
+//...Array(N) returns an empty array that is that long.
+//.keys rips off the first part of an entry (0:'undefined')
+//[...Array(5).entries()]; will show you that. 
+
 // # 3
 // Drone Fly-By
 // https://www.codewars.com/kata/58356a94f8358058f30004b5/train/javascript
 
 
 //this one worked in my browser, but replaceAll didn't work on CodeWars and threw an error that it wasn't a function. 
+
 function flyBy(lamps, drone){
     let index = drone.indexOf('T');
     console.log(index);
@@ -60,6 +76,18 @@ function flyBy(lamps, drone){
     }
   };
 
+//could have:
+
+function FlyBy (lamps,drone) {
+    let lampsOn = '';
+    for (let i = 0; i < drone.length; i++) {
+        lampsOn =+ 'o'
+    }
+    const lampsOff = lamps.slice(lampsOn.length, lamps.length);
+    return lampsOn + lampsOff,
+};
+
+
 
 // # 4
 // Get the mean of an array
@@ -72,6 +100,16 @@ function getAverage(marks){
     };
     let avg = Math.floor(sum/marks.length);
     return avg;
+  }
+
+  //could have:
+
+  function getAverage(marks){
+    let sum = 0
+    for (i = 0; i < marks.length; i++) {
+      sum += marks[i];
+    };
+    return Math.floor(sum/marks.length);
   }
 
 
@@ -99,4 +137,10 @@ const reverse = a => {let b = [];
  return b;
   }
 
+//too long by 3 characters
+  reverse=a=>[...a].map(b=>a.pop())
 
+  
+  reverse=a=>[...a].map(a.pop,a)
+
+  

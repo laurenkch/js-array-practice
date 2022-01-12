@@ -14,6 +14,22 @@ let makeAnArray = function (str, i) {
     return array;
 }
 
+//could have also:
+const anotherWay = function(str, i) {
+    return Array.from({
+        length: i 
+    }, function () {
+        return str;
+    });
+}
+
+//array.from gives you an array from an iterable objects (something with a length this includes strings since they have a length.)
+Array.from({
+    length: i 
+});
+[undefined, undefined, undefined]
+
+//the function returns the string in the array.
 
 // -----------------------------------------------
 
@@ -44,7 +60,35 @@ let removeFalsy = function (arr) {
     return trueArray
 };
 
+//don't need slice because filter returns a new array anyways. 
+
+// could have said:
+
+let removeFalsy = function (arr) {
+    trueArray = arr.filter(Boolean);
+    return trueArray
+};
+
+
+// filter takes a function and runs it against every item in the array
+
+// if(i) also checks for falsy, so the below code would only push a value if true. 
+
+function removeFalsy() {
+    const newArr = [];
+    for(let i for arr) {
+        if(i) {
+            newArr.push(i)
+        }
+    }
+    return newArr;
+};
+
+//be mindful of coersion. 0 != false returns true. undefined is not equal to false or true loosely. 
+
 // trueArray = arr.slice().filter(element => true); is there a way to make this work too? or rather, why does it not?
+
+//!!undefined == false returns true. Double bang manually coerces it to a boolean value. 
 
 // -----------------------------------------------
 
@@ -60,6 +104,16 @@ let arrayToObject = function (arr) {
     const object = Object.fromEntries(arr);
     return object;
 };
+
+//could have also:
+
+function createObj1(arr) {
+    const obj = {};
+    for(let i = 0; i < arr.length; i++) {
+        obj[arr[i][0] = arr[i][1]];
+    }
+    return result;
+}
 
 myArray = [['name', 'Charlie'], ['color', 'brown'], ['age', 10]];
 arrayToObject(myArray);
@@ -77,6 +131,12 @@ arrayToObject(myArray);
 const noDupes = function (arr) {
     uniArray = [...new Set(arr)];
     return uniArray;
+}
+
+//could have also said:
+
+const noDupes = function (arr) {
+    return [...newSet(arr)];
 }
 
 let testArray = [1,2,3,4,5,4,3];
@@ -105,6 +165,23 @@ const identicalOrNot = function (arr1, arr2) {
     }
 };
 
+//could have also:
+
+function comparArrays(arr1, arr2) {
+    if(arr1.length !== arr2.length){
+        return false;
+    }
+    arr1.sort();
+    arr2.sort();
+
+    for(let i=0; i < arr.length; i++) {
+        if(arr[i]!==arr2[i]) {
+            return false;
+        }
+    }
+}
+
+//if you can get out early do so, it's  quicker program
 // let testArray1 = [1,2,3,4];
 // let testArray2 = [1,4,3,2];
 
